@@ -1,0 +1,14 @@
+name: Weaponize
+version: 1.0
+description: guns
+author: Phanta
+website: https://phanta.xyz
+main: io.github.phantamanta44.mobafort.weaponize.Weaponize
+commands:
+    wpn:
+      usage: '/wpn'
+      description: debug
+permissions:
+    weaponize.admin:
+        description: admin powers activate
+        default: op
