@@ -1,4 +1,4 @@
-package io.github.phantamanta44.mobafort.weaponize.damage;
+package io.github.phantamanta44.mobafort.weaponize.stat;
 
 import com.google.common.base.Functions;
 import com.google.common.collect.ImmutableMap;
@@ -16,14 +16,14 @@ class VanillaDamageProvider implements IDamageProvider {
 
 	@Override
 	public void damageEntity(Damage dmg, Player src, LivingEntity target) {
-		double amt = dmg.getBaseDmg() / 25D;
-		for (Map.Entry<DamageStat, Double> stat : dmg.getDamages())
-			amt += getStat(src, stat.getKey()) * stat.getValue();
+		double amt = dmg.getBaseDmg();
+		for (Map.Entry<Stats, Double> stat : dmg.getDamages())
+			amt += Stats.getStat(src, stat.getKey()).getValue().doubleValue() * stat.getValue();
 		if (dmg.getType() == Damage.DamageType.TRUE)
-			target.setHealth(MathUtils.clamp(target.getHealth() - amt, 0D, target.getMaxHealth()));
+			target.setHealth(MathUtils.clamp(target.getHealth() - amt / 30D, 0D, target.getMaxHealth()));
 		else {
 			EntityDamageByEntityEvent dmgEvent = new EntityDamageByEntityEvent(src, target, EntityDamageEvent.DamageCause.CUSTOM,
-					new EnumMap<>(ImmutableMap.of(EntityDamageEvent.DamageModifier.BASE, amt)),
+					new EnumMap<>(ImmutableMap.of(EntityDamageEvent.DamageModifier.BASE, amt / 30D)),
 					new EnumMap<>(ImmutableMap.of(EntityDamageEvent.DamageModifier.BASE, Functions.constant(0D))));
 			Bukkit.getServer().getPluginManager().callEvent(dmgEvent);
 			if (!dmgEvent.isCancelled()) {
@@ -35,27 +35,7 @@ class VanillaDamageProvider implements IDamageProvider {
 
 	@Override
 	public void healEntity(double amt, Player src, LivingEntity target) {
-		target.setHealth(MathUtils.clamp(target.getHealth() + (amt / 5D), 0D, target.getMaxHealth()));
-	}
-
-	@Override
-	public double getStat(Player src, DamageStat stat) {
-		switch (stat) {
-			case AD:
-				return 3D;
-			case CRIT_DMG:
-				return 2D;
-			case HP:
-				return src.getHealth();
-			case HP_MAX:
-				return src.getMaxHealth();
-			case HP_MISSING:
-				return src.getMaxHealth() - src.getHealth();
-			case MANA:
-				return src.getLevel();
-			default:
-				return 0;
-		}
+		target.setHealth(MathUtils.clamp(target.getHealth() + (amt / 30D), 0D, target.getMaxHealth()));
 	}
 
 }

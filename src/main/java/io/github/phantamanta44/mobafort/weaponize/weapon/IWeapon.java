@@ -31,8 +31,4 @@ public interface IWeapon {
 
 	}
 
-	interface IWeaponData<P extends IWeapon> {
-
-	}
-
 }

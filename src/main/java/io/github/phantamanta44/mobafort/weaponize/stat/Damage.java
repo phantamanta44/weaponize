@@ -1,4 +1,4 @@
-package io.github.phantamanta44.mobafort.weaponize.damage;
+package io.github.phantamanta44.mobafort.weaponize.stat;
 
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -31,7 +31,7 @@ public class Damage {
 	}
 
 	private double baseDmg;
-	private Collection<Map.Entry<DamageStat, Double>> damages;
+	private Collection<Map.Entry<Stats, Double>> damages;
 	private DamageType type;
 
 	public Damage(double dmg, DamageType type) {
@@ -40,7 +40,7 @@ public class Damage {
 		this.damages = new ArrayList<>();
 	}
 
-	public Damage withDmg(DamageStat stat, double multiplier) {
+	public Damage withDmg(Stats stat, double multiplier) {
 		damages.add(new AbstractMap.SimpleImmutableEntry<>(stat, multiplier));
 		return this;
 	}
@@ -53,7 +53,7 @@ public class Damage {
 		return baseDmg;
 	}
 
-	public Collection<Map.Entry<DamageStat, Double>> getDamages() {
+	public Collection<Map.Entry<Stats, Double>> getDamages() {
 		return damages;
 	}
 

@@ -11,7 +11,6 @@ import java.util.*;
 public class WeaponTracker {
 
 	private static final Map<UUID, Collection<IWeapon.IWeaponInstance>> playerMap = new HashMap<>();
-	private static final Map<IWeapon.IWeaponInstance, ? extends IWeapon.IWeaponData> dataMap = new HashMap<>();
 
 	@SuppressWarnings("unchecked")
 	public static void init() {
