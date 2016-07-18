@@ -1,7 +1,7 @@
 package io.github.phantamanta44.mobafort.weaponize.projectile;
 
+import io.github.phantamanta44.mobafort.lib.math.RayTrace;
 import io.github.phantamanta44.mobafort.weaponize.Weaponize;
-import io.github.phantamanta44.mobafort.weaponize.util.RayTrace;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.util.Vector;

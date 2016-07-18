@@ -1,7 +1,7 @@
 package io.github.phantamanta44.mobafort.weaponize.weapon;
 
 import io.github.phantamanta44.mobafort.weaponize.Weaponize;
-import io.github.phantamanta44.mobafort.weaponize.util.TitleUtils;
+import io.github.phantamanta44.mobafort.lib.effect.TitleUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.meta.ItemMeta;

@@ -2,7 +2,7 @@ package io.github.phantamanta44.mobafort.weaponize.stat;
 
 import com.google.common.base.Functions;
 import com.google.common.collect.ImmutableMap;
-import io.github.phantamanta44.mobafort.weaponize.util.MathUtils;
+import io.github.phantamanta44.mobafort.lib.math.MathUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
