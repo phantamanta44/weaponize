@@ -6,7 +6,7 @@ import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 @SuppressWarnings("unchecked")
-public class VanillaStatProvider implements IStatProvider {
+class VanillaStatProvider implements IStatProvider {
 
 	@Override
 	public <T extends Number> IStat<T> getStat(Player player, Stats<T> stat) {

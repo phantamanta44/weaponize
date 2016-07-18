@@ -49,6 +49,18 @@ public class Stats<T extends Number> {
 		return getProvider().getStat(player, type);
 	}
 
+	public static boolean expendMana(Player player, int amt) {
+		IStat<Integer> manaStat = getStat(player, MANA);
+		if (manaStat != null && manaStat.isMutable()) {
+			int mana = manaStat.getValue();
+			if (mana >= amt) {
+				manaStat.setValue(mana - amt);
+				return true;
+			}
+		}
+		return false;
+	}
+
 	private static void bindDefaultProvider() {
 		bindProvider(new VanillaStatProvider());
 	}
