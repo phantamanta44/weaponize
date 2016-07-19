@@ -10,6 +10,8 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.event.HandlerList;
+import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -24,6 +26,7 @@ public class Weaponize extends JavaPlugin {
 	private BukkitRunnable tickTask;
 	private Collection<LongConsumer> tickHandlers = new LinkedList<>();
 	private long tick;
+	private Listener ich, pih;
 
 	@Override
 	public void onEnable() {
@@ -33,13 +36,15 @@ public class Weaponize extends JavaPlugin {
 		ProjectileTracker.init();
 		tickTask = new TickTask();
 		tickTask.runTaskTimer(this, 0L, 1L);
-		Bukkit.getServer().getPluginManager().registerEvents(new ItemCheckHandler(), this);
-		Bukkit.getServer().getPluginManager().registerEvents(new PlayerInteractHandler(), this);
+		Bukkit.getServer().getPluginManager().registerEvents(ich = new ItemCheckHandler(), this);
+		Bukkit.getServer().getPluginManager().registerEvents(pih = new PlayerInteractHandler(), this);
 	}
 
 	@Override
 	public void onDisable() {
 		tickTask.cancel();
+		HandlerList.unregisterAll(ich);
+		HandlerList.unregisterAll(pih);
 	}
 
 	@Override

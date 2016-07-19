@@ -1,7 +1,6 @@
 package io.github.phantamanta44.mobafort.weaponize.weapon;
 
 import io.github.phantamanta44.mobafort.lib.item.ItemSig;
-import io.github.phantamanta44.mobafort.weaponize.weapon.impl.*;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
@@ -9,15 +8,10 @@ import java.util.Map;
 
 public class WeaponRegistry {
 
-	private static final Map<ItemSig, IWeapon> weaponMap = new HashMap<>();
+	private static Map<ItemSig, IWeapon> weaponMap;
 
 	public static void init() {
-		register(BlinkDrive.INSTANCE);
-		register(DivineIntervention.INSTANCE);
-		register(DeadlyFlourish.INSTANCE);
-		register(MysticShot.INSTANCE);
-		register(PrimordialBurst.INSTANCE);
-		register(LightArrow.INSTANCE);
+		weaponMap = new HashMap<>();
 	}
 
 	public static void register(IWeapon weapon) {
