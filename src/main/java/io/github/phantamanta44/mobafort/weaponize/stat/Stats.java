@@ -67,8 +67,16 @@ public class Stats<T extends Number> {
 
 	public enum StatType {
 
-		AD, BONUS_AD, AS, CRIT_CHANCE, CRIT_DMG, LIFE_STEAL, ARM_PEN, ARM, HP, HP_MAX, HP_MISSING,
-		HP_REGEN, MR, MOVE_SPEED, AP, MAG_PEN, MANA, MANA_MAX, MANA_REGEN, SPELL_VAMP
+		AD(Integer.class), BONUS_AD(Integer.class), AS(Double.class), CRIT_CHANCE(Float.class), CRIT_DMG(Float.class), LIFE_STEAL(Float.class),
+		ARM_PEN(Integer.class), ARM(Integer.class), HP(Integer.class), HP_MAX(Integer.class), HP_MISSING(Integer.class), HP_REGEN(Double.class),
+		MR(Integer.class), MOVE_SPEED(Integer.class), AP(Integer.class), MAG_PEN(Integer.class), MANA(Integer.class), MANA_MAX(Integer.class),
+		MANA_REGEN(Double.class), SPELL_VAMP(Float.class);
+
+		public final Class<? extends Number> type;
+
+		StatType(Class<? extends Number> type) {
+			this.type = type;
+		}
 
 	}
 
