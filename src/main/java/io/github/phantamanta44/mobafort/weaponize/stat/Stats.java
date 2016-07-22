@@ -20,7 +20,7 @@ public class Stats<T extends Number> {
 	public static final Stats<Integer> MR = new Stats<>(StatType.MR);
 	public static final Stats<Integer> MOVE_SPEED = new Stats<>(StatType.MOVE_SPEED);
 
-	public static final Stats<Integer> AP = new Stats<>(StatType.AD);
+	public static final Stats<Integer> AP = new Stats<>(StatType.AP);
 	public static final Stats<Integer> MAG_PEN = new Stats<>(StatType.MAG_PEN);
 	public static final Stats<Integer> MANA = new Stats<>(StatType.MANA);
 	public static final Stats<Integer> MANA_MAX = new Stats<>(StatType.MANA_MAX);
