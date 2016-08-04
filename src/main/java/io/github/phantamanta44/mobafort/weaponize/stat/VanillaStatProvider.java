@@ -51,6 +51,8 @@ class VanillaStatProvider implements IStatProvider {
 				return new ImmutableStatImpl(player, Stats.MANA_REGEN, 0);
 			case SPELL_VAMP:
 				return new ImmutableStatImpl(player, Stats.SPELL_VAMP, 0F);
+			case CDR:
+				return new ImmutableStatImpl(player, Stats.CDR, 0F);
 		}
 		throw new IllegalArgumentException();
 	}

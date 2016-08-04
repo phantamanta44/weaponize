@@ -26,6 +26,7 @@ public class Stats<T extends Number> {
 	public static final Stats<Integer> MANA_MAX = new Stats<>(StatType.MANA_MAX);
 	public static final Stats<Double> MANA_REGEN = new Stats<>(StatType.MANA_REGEN);
 	public static final Stats<Float> SPELL_VAMP = new Stats<>(StatType.SPELL_VAMP);
+	public static final Stats<Float> CDR = new Stats<>(StatType.CDR);
 
 	public final StatType enumType;
 
@@ -70,7 +71,7 @@ public class Stats<T extends Number> {
 		AD(Integer.class), BONUS_AD(Integer.class), AS(Double.class), CRIT_CHANCE(Float.class), CRIT_DMG(Float.class), LIFE_STEAL(Float.class),
 		ARM_PEN(Integer.class), ARM(Integer.class), HP(Integer.class), HP_MAX(Integer.class), HP_MISSING(Integer.class), HP_REGEN(Double.class),
 		MR(Integer.class), MOVE_SPEED(Integer.class), AP(Integer.class), MAG_PEN(Integer.class), MANA(Integer.class), MANA_MAX(Integer.class),
-		MANA_REGEN(Double.class), SPELL_VAMP(Float.class);
+		MANA_REGEN(Double.class), SPELL_VAMP(Float.class), CDR(Float.class);
 
 		public final Class<? extends Number> type;
 
