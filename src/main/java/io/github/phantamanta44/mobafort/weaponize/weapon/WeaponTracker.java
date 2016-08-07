@@ -47,7 +47,7 @@ public class WeaponTracker {
 	}
 
 	public static void put(Player player, IWeapon weapon) {
-		get(player.getUniqueId()).add(weapon.instantiate());
+		get(player.getUniqueId()).add(weapon.instantiate(player));
 	}
 
 	public static void clear(Player player) {
