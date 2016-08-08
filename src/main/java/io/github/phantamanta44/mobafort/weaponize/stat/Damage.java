@@ -49,6 +49,10 @@ public class Damage {
 		getProvider().damageEntity(this, src, target);
 	}
 
+	public void deal(IStatted src, LivingEntity target) {
+		getProvider().damageEntity(this, src, target);
+	}
+
 	public double getBaseDmg() {
 		return baseDmg;
 	}
