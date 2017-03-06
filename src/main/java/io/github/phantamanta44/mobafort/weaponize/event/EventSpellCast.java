@@ -9,6 +9,10 @@ public class EventSpellCast extends Event {
 
 	private static final HandlerList hl = new HandlerList();
 
+	public static HandlerList getHandlerList() {
+		return hl;
+	}
+
 	private Player player;
 	private IWeapon.IWeaponInstance spell;
 	private boolean cancelled;

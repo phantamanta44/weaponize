@@ -8,6 +8,9 @@ commands:
     wpn:
       usage: '/wpn'
       description: debug
+    wpns:
+      usage: '/wpns'
+      description: debug
 permissions:
     weaponize.admin:
         description: admin powers activate

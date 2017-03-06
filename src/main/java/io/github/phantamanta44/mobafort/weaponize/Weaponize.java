@@ -61,7 +61,20 @@ public class Weaponize extends JavaPlugin {
 			Player p = (Player)sender;
 			WeaponTracker.clear(p);
 			new ItemCheckHandler.CheckTask(p.getInventory(), p.getUniqueId()).run();
-			sender.sendMessage("Updated instances.");
+			sender.sendMessage("Found weapons:");
+			sender.sendMessage(WeaponTracker.get(p.getUniqueId()).stream()
+					.map(i -> i.getTemplate().getClass().getName())
+					.toArray(String[]::new));
+		} else if (cmd.getName().equals("wpns")) {
+			if (!sender.hasPermission("weaponize.admin")) {
+				sender.sendMessage(ChatColor.RED + "You cannot use this command.");
+				return true;
+			}
+			sender.sendMessage("Loaded weapons:");
+			sender.sendMessage(WeaponRegistry.stream()
+					.map(w -> String.format("%s:%d -> %s", w.getType().material, w.getType().meta, w.getClass().getName()))
+					.toArray(String[]::new));
+			return true;
 		}
 		return false;
 	}

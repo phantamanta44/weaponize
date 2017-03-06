@@ -58,12 +58,7 @@ public class WeaponTracker {
 	}
 
 	public static Collection<IWeapon.IWeaponInstance> get(UUID id) {
-		Collection<IWeapon.IWeaponInstance> val = playerMap.get(id);
-		if (val == null) {
-			val = new ArrayList<>();
-			playerMap.put(id, val);
-		}
-		return val;
+		return playerMap.computeIfAbsent(id, k -> new ArrayList<>());
 	}
 
 }
