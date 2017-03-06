@@ -4,14 +4,14 @@ import org.bukkit.entity.Player;
 
 public interface IStat<T extends Number> {
 
-	T getValue();
+    T getValue();
 
-	Player getPlayer();
+    Player getPlayer();
 
-	Stats<T> getStatType();
+    Stats<T> getStatType();
 
-	boolean isMutable();
+    boolean isMutable();
 
-	void setValue(T val);
+    void setValue(T val);
 
 }

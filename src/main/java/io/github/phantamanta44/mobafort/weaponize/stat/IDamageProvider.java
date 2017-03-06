@@ -5,10 +5,10 @@ import org.bukkit.entity.Player;
 
 public interface IDamageProvider {
 
-	void damageEntity(Damage dmg, Player src, LivingEntity target);
+    void damageEntity(Damage dmg, Player src, LivingEntity target);
 
-	void damageEntity(Damage dmg, IStatted src, LivingEntity target);
+    void damageEntity(Damage dmg, IStatted src, LivingEntity target);
 
-	void healEntity(double amt, Player src, LivingEntity target);
+    void healEntity(double amt, Player src, LivingEntity target);
 
 }

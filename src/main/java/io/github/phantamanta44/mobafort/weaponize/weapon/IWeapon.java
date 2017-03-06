@@ -8,28 +8,28 @@ import java.util.List;
 
 public interface IWeapon {
 
-	ItemSig getType();
+    ItemSig getType();
 
-	IWeaponInstance instantiate(Player player);
+    IWeaponInstance instantiate(Player player);
 
-	interface IWeaponInstance {
+    interface IWeaponInstance {
 
-		String getName();
+        String getName();
 
-		List<String> getLore();
+        List<String> getLore();
 
-		int getStackSize();
+        int getStackSize();
 
-		String getHudInfo();
+        String getHudInfo();
 
-		IWeapon getTemplate();
+        IWeapon getTemplate();
 
-		void onInteract(PlayerInteractEvent event);
+        void onInteract(PlayerInteractEvent event);
 
-		void tick(long tick);
+        void tick(long tick);
 
-		void kill();
+        void kill();
 
-	}
+    }
 
 }

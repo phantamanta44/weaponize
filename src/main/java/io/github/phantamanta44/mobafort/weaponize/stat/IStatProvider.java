@@ -5,6 +5,6 @@ import org.bukkit.entity.Player;
 @FunctionalInterface
 public interface IStatProvider {
 
-	<T extends Number> IStat<T> getStat(Player player, Stats<T> stat);
+    <T extends Number> IStat<T> getStat(Player player, Stats<T> stat);
 
 }

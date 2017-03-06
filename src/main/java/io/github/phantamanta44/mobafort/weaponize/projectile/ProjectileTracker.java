@@ -13,51 +13,51 @@ import java.util.stream.Collectors;
 
 public class ProjectileTracker {
 
-	private static final List<SpellProjectile> projs = new LinkedList<>();
+    private static final List<SpellProjectile> projs = new LinkedList<>();
 
-	public static void init() {
-		Weaponize.INSTANCE.registerTickHandler(tick -> {
-			projs.removeIf(p -> {
-				p.tick(tick);
-				checkCollision(p);
-				return p.isDead();
-			});
-		});
-	}
+    public static void init() {
+        Weaponize.INSTANCE.registerTickHandler(tick -> {
+            projs.removeIf(p -> {
+                p.tick(tick);
+                checkCollision(p);
+                return p.isDead();
+            });
+        });
+    }
 
-	private static void checkCollision(SpellProjectile p) {
-		Vector newPos = p.getPosition().clone().add(p.getVelocity());
-		boolean block = p.getCollisionCriteria().collidesWithBlock(), entity = p.getCollisionCriteria().collidesWithEntity();
-		if (block || entity) {
-			double dist = newPos.distance(p.getPosition());
-			Iterator<Location> iter = new RayTrace(p.getLocation(), dist, (int) Math.ceil(dist / p.getRadius())).iterator();
-			while (iter.hasNext()) {
-				Location next = iter.next();
-				if (block) {
-					if (p.getWorld().getBlockAt(next).getType().isSolid()) {
-						p.setPosition(next.toVector());
-						p.onHit(SpellProjectile.CollisionCriteria.BLOCK, null);
-						break;
-					}
-				}
-				if (entity) {
-					double r = p.getRadius();
-					List<Entity> entities = p.getWorld().getNearbyEntities(next, r, r, r).stream()
-							.filter(e -> !e.getUniqueId().equals(p.getSource()))
-							.collect(Collectors.toList());
-					if (entities.size() > 0) {
-						p.setPosition(next.toVector());
-						p.onHit(SpellProjectile.CollisionCriteria.ENTITY, entities);
-						break;
-					}
-				}
-			}
-		}
-		p.setPosition(newPos);
-	}
+    private static void checkCollision(SpellProjectile p) {
+        Vector newPos = p.getPosition().clone().add(p.getVelocity());
+        boolean block = p.getCollisionCriteria().collidesWithBlock(), entity = p.getCollisionCriteria().collidesWithEntity();
+        if (block || entity) {
+            double dist = newPos.distance(p.getPosition());
+            Iterator<Location> iter = new RayTrace(p.getLocation(), dist, (int) Math.ceil(dist / p.getRadius())).iterator();
+            while (iter.hasNext()) {
+                Location next = iter.next();
+                if (block) {
+                    if (p.getWorld().getBlockAt(next).getType().isSolid()) {
+                        p.setPosition(next.toVector());
+                        p.onHit(SpellProjectile.CollisionCriteria.BLOCK, null);
+                        break;
+                    }
+                }
+                if (entity) {
+                    double r = p.getRadius();
+                    List<Entity> entities = p.getWorld().getNearbyEntities(next, r, r, r).stream()
+                            .filter(e -> !e.getUniqueId().equals(p.getSource()))
+                            .collect(Collectors.toList());
+                    if (entities.size() > 0) {
+                        p.setPosition(next.toVector());
+                        p.onHit(SpellProjectile.CollisionCriteria.ENTITY, entities);
+                        break;
+                    }
+                }
+            }
+        }
+        p.setPosition(newPos);
+    }
 
-	public static void dispatch(SpellProjectile proj) {
-		projs.add(proj);
-	}
+    public static void dispatch(SpellProjectile proj) {
+        projs.add(proj);
+    }
 
 }
